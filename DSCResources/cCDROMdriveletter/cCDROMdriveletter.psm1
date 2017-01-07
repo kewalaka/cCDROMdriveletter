@@ -65,6 +65,8 @@ function Set-TargetResource
                         $_.Caption -ne "Microsoft Virtual DVD-ROM"
                         }
                    ).Drive
+    
+    Write-Verbose "The current drive letter is $currentDriveLetter, attempting to set to $driveletter"
 
     # get the volume corresponding to the drive letter, and set the drive letter of this volume to $DriveLetter
     if ($PSCmdlet.ShouldProcess("Setting cdrom drive letter to $DriveLetter")) {

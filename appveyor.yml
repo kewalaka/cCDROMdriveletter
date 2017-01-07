@@ -42,7 +42,7 @@ deploy_script:
   - ps: |
       # Creating project artifact
       $stagingDirectory = (Resolve-Path ..).Path
-      $manifest = Join-Path $pwd "xcCDROMdriveletter.psd1" 
+      $manifest = Join-Path $pwd "cCDROMdriveletter.psd1" 
       (Get-Content $manifest -Raw).Replace("0.1.0.0", $env:APPVEYOR_BUILD_VERSION) | Out-File $manifest 
       $zipFilePath = Join-Path $stagingDirectory "$(Split-Path $pwd -Leaf).zip"
       Add-Type -assemblyname System.IO.Compression.FileSystem
