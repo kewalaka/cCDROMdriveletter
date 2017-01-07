@@ -1,12 +1,11 @@
 ################################################################################
 # This is template for appveyor.yml
-# Before using it in your repository, modify places marked with # TODO Modify
 ################################################################################
 
 #---------------------------------# 
 #      environment configuration  # 
 #---------------------------------# 
-version: 1.0.{build}.0 # TODO Modify version
+version: 0.1.0.0 
 install:
     - git clone https://github.com/PowerShell/DscResource.Tests
     - ps: |
