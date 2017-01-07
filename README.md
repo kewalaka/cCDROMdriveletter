@@ -1,6 +1,6 @@
-# cCDROMdriveletter
+[![Build status](https://ci.appveyor.com/api/projects/status/7mccrx1uwn4gnuhp/branch/master?svg=true)](https://ci.appveyor.com/project/kewalaka/ccdromdriveletter)
 
-TODO: AppVeyor stuff
+# cCDROMdriveletter
 
 This is a simple custom DSC resource that sets the drive letter of the first cdrom drive.
 
