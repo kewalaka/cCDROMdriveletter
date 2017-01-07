@@ -13,7 +13,7 @@ For more information see the [Code of Conduct FAQ](https://opensource.microsoft.
 
 #### Requirements
 
-Only supports Windows OS, with a single cdrom drive.  Works with PowerShell v4 and above.
+Only supports Windows OS, with a single cdrom drive.  Works with PowerShell v4 and above, requires WinRM.
 
 This module will ignore cdrom devices that are auto-created when mounted ISO images within the OS.
 
@@ -25,17 +25,26 @@ This module will ignore cdrom devices that are auto-created when mounted ISO ima
 #### Examples
 
 ```
-# Sets the CD drive letter to Z:
+# Sets the CD drive letter to Z: on the localhost 
 Configuration Sample_SetCDtoZ
 {   
     Import-DscResource -module cCDROMdriveletter
-    
-    cCDROMdriveletter cdrom
-    {
-        DriveLetter = "Z:"
-        Ensure      = "Present"
+
+    Node localhost {
+
+        cCDROMdriveletter cdrom
+        {
+            DriveLetter = "Z:"
+            Ensure      = "Present"
+        }
     }
 }
+
+# Creates a mof and applies the resource
+$DscDir = "C:\DSC\cCDROMdriveletter"
+New-Item $DscDir -ItemType Directory 
+Sample_SetCDtoZ -OutputPath $DscDir
+Start-DscConfiguration -Path $DscDir -Wait -Force -Verbose
 ```
 
 ## Versions
