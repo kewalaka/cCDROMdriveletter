@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '1.0.0'
+ModuleVersion = '1.1.0'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -30,7 +30,7 @@ CompanyName = 'None'
 Copyright = '(c) 2017 Stu (kewalaka@gmail.com).'
 
 # Description of the functionality provided by this module
-# Description = ''
+Description = 'A simple DSC resource that can set the drive letter of a cdrom'
 
 # Minimum version of the Windows PowerShell engine required by this module
 PowerShellVersion = '4.0'

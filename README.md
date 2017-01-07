@@ -49,8 +49,14 @@ Start-DscConfiguration -Path $DscDir -Wait -Force -Verbose
 
 ## Versions
 
+### v1.1.0
+
+ * Expanded sample to make it self contained
+ * Added description to module manifest
+ 
 ### v1.0.0
 
 * Initial release with the following resources:
   * cCDRomdriveletter
 * Passes PSScriptAnalyser build checks (using Appveyor)
+
