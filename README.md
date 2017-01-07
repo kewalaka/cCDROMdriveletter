@@ -40,11 +40,8 @@ Configuration Sample_SetCDtoZ
 
 ## Versions
 
-### Unreleased
+### v1.0.0
 
 * Initial release with the following resources:
   * cCDRomdriveletter
-
-### {1.0.0.0}
-
-* pending
+* Passes PSScriptAnalyser build checks (using Appveyor)
