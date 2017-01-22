@@ -49,6 +49,10 @@ Start-DscConfiguration -Path $DscDir -Wait -Force -Verbose
 
 ## Versions
 
+### v1.1.1
+
+ * Fixed an issue with the ISO detection logic, affecting Hyper-V VMs
+
 ### v1.1.0
 
  * Expanded sample to make it self contained

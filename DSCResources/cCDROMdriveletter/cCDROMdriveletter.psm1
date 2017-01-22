@@ -60,18 +60,29 @@ function Set-TargetResource
     )
 
     # Get the current drive letter corresponding to the virtual cdrom drive
-    # the Caption property is used to avoid mounted ISO images
-    $currentDriveLetter = (Get-CimInstance -ClassName WIn32_cdromdrive | Where-Object {
-                        $_.Caption -ne "Microsoft Virtual DVD-ROM"
+    # the Caption and DeviceID properties are used to avoid mounted ISO images
+    # with the Device ID, we look for the length of the string after the final backslash (crude, but appears to work so far)
+
+    # Example DeviceID for a virtual drive in a Hyper-V VM - SCSI\CDROM&VEN_MSFT&PROD_VIRTUAL_DVD-ROM\000006
+    # Example DeviceID for a mounted ISO   in a Hyper-V VM - SCSI\CDROM&VEN_MSFT&PROD_VIRTUAL_DVD-ROM\2&1F4ADFFE&0&000002
+    $currentDriveLetter = (Get-CimInstance -ClassName win32_cdromdrive | Where-Object {
+                        -not (
+                                $_.Caption -eq "Microsoft Virtual DVD-ROM" -and
+                                ($_.DeviceID.Split("\")[-1]).Length -gt 10
+                             )
                         }
                    ).Drive
     
     Write-Verbose "The current drive letter is $currentDriveLetter, attempting to set to $driveletter"
 
-    # get the volume corresponding to the drive letter, and set the drive letter of this volume to $DriveLetter
-    if ($PSCmdlet.ShouldProcess("Setting cdrom drive letter to $DriveLetter")) {
-        Get-CimInstance -ClassName Win32_Volume -Filter "DriveLetter = '$currentDriveLetter'" | 
-        Set-CimInstance -Property @{ DriveLetter="$DriveLetter"}
+    # assuming a drive letter is found
+    if ($currentDriveLetter)
+    {
+        # get the volume corresponding to the drive letter, and set the drive letter of this volume to $DriveLetter
+        if ($PSCmdlet.ShouldProcess("Setting cdrom drive letter to $DriveLetter")) {
+            Get-CimInstance -ClassName Win32_Volume -Filter "DriveLetter = '$currentDriveLetter'" | 
+            Set-CimInstance -Property @{ DriveLetter="$DriveLetter"}
+        }
     }
 }
 
