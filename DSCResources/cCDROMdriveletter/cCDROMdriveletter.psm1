@@ -4,10 +4,14 @@ function Get-TargetResource
     [OutputType([System.Collections.Hashtable])]
     param
     (
+        # specify the drive letter as a single letter, optionally include the colon
         [parameter(Mandatory = $true)]
         [System.String]
         $DriveLetter
     )
+
+    # allow use of drive letter without colon
+    $DriveLetter = $DriveLetter[0] + ":"
 
     Write-Verbose "Using Get-CimInstance to get the cdrom drives in the system"
     try {
@@ -50,6 +54,7 @@ function Set-TargetResource
                    ConfirmImpact="Low")]
     param
     (
+        # specify the drive letter as a single letter, optionally include the colon
         [parameter(Mandatory = $true)]
         [System.String]
         $DriveLetter,
@@ -58,6 +63,9 @@ function Set-TargetResource
         [System.String]
         $Ensure = "Present"
     )
+
+    # allow use of drive letter without colon
+    $DriveLetter = $DriveLetter[0] + ":"
 
     # Get the current drive letter corresponding to the virtual cdrom drive
     # the Caption and DeviceID properties are used to avoid mounted ISO images
@@ -93,6 +101,7 @@ function Test-TargetResource
     [OutputType([System.Boolean])]
     param
     (
+        # specify the drive letter as a single letter, optionally include the colon
         [parameter(Mandatory = $true)]
         [System.String]
         $DriveLetter,
@@ -101,6 +110,9 @@ function Test-TargetResource
         [System.String]
         $Ensure
     )
+
+    # allow use of drive letter without colon
+    $DriveLetter = $DriveLetter[0] + ":"
 
     # is there a cdrom
     $cdrom = Get-CimInstance -ClassName WIn32_cdromdrive -Property Id
