@@ -7,7 +7,7 @@ Configuration Sample_SetCDtoZ
 
         cCDROMdriveletter cdrom
         {
-            DriveLetter = "Z:"
+            DriveLetter = "Z"
             Ensure      = "Present"
         }
     }

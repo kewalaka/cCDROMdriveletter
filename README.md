@@ -34,7 +34,7 @@ Configuration Sample_SetCDtoZ
 
         cCDROMdriveletter cdrom
         {
-            DriveLetter = "Z:"
+            DriveLetter = "Z"
             Ensure      = "Present"
         }
     }
@@ -48,6 +48,10 @@ Start-DscConfiguration -Path $DscDir -Wait -Force -Verbose
 ```
 
 ## Versions
+
+### v1.2.0
+
+ * Allowed the drive letter to be specified with or without a semi colon (issue #1)
 
 ### v1.1.1
 
