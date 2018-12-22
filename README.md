@@ -1,6 +1,6 @@
 [![Build status](https://ci.appveyor.com/api/projects/status/7mccrx1uwn4gnuhp/branch/master?svg=true)](https://ci.appveyor.com/project/kewalaka/ccdromdriveletter)
 
-This repo is deprecated, the functionality has been merged into the xStorage repo - see https://github.com/kewalaka/cCDROMdriveletter/issues/3
+This repo is deprecated, the functionality has been merged into the [StorageDsc repo](https://github.com/PowerShell/StorageDsc) - see [this issue](https://github.com/kewalaka/cCDROMdriveletter/issues/3)
 
 # cCDROMdriveletter
 
